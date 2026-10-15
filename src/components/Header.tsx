@@ -1,3 +1,4 @@
+import CartPreview from './CartPreview'
 import Page from './Page'
 
 function Header() {
@@ -5,7 +6,10 @@ function Header() {
     <>
       <header className="navbar">
         <p className="navbar__brand">Shop</p>
-        <p className="navbar__count">Items: 0</p>
+        <div className="navbar__actions">
+          <p className="navbar__count">Items: 0</p>
+          <CartPreview />
+        </div>
       </header>
       <Page />
     </>
