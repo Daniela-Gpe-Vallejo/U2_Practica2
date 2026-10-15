@@ -200,7 +200,7 @@
        top: calc(100% + var(--space-2));
        right: 0;
        z-index: 10;
-       min-width: 14rem;
+       min-width: 18rem;
        padding: var(--space-3);
        background: var(--color-surface);
        border: 1px solid var(--color-border-subtle);
@@ -246,13 +246,21 @@
      }
 
      .cart-preview__name,
+     .cart-preview__quantity,
      .cart-preview__price {
        color: var(--color-text);
        font-size: var(--text-sm);
      }
 
+     .cart-preview__quantity,
      .cart-preview__price {
        font-weight: 600;
+     }
+
+     .cart-preview__remove {
+       padding: var(--space-1) var(--space-2);
+       font-size: var(--text-xs);
+       white-space: nowrap;
      }
 
      .app {

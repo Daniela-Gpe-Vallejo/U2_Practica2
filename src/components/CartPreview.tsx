@@ -1,4 +1,4 @@
-const cartItems = [{ id: 'notebook', name: 'Notebook', price: 10 }]
+const cartItems = [{ id: 'notebook', name: 'Notebook', price: 10, quantity: 1 }]
 
 function CartPreview() {
   return (
@@ -25,7 +25,15 @@ function CartPreview() {
           {cartItems.map((item) => (
             <li key={item.id} className="cart-preview__item">
               <span className="cart-preview__name">{item.name}</span>
+              <span className="cart-preview__quantity">×{item.quantity}</span>
               <span className="cart-preview__price">${item.price}</span>
+              <button
+                type="button"
+                className="button button--danger cart-preview__remove"
+                aria-label={`Remove 1 of ${item.quantity} ${item.name}`}
+              >
+                Remove 1
+              </button>
             </li>
           ))}
         </ul>
