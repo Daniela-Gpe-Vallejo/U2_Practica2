@@ -1,9 +1,15 @@
-const cartItems = [{ id: 'notebook', name: 'Notebook', price: 10, quantity: 1 }]
+import { useCart } from '../context/useCart'
 
 function CartPreview() {
+  const { cartItems, totalItems, removeFromCart } = useCart()
+
   return (
     <div className="cart-preview">
-      <button type="button" className="cart-preview__button" aria-label="Cart">
+      <button
+        type="button"
+        className="cart-preview__button"
+        aria-label={`Cart with ${totalItems} items`}
+      >
         <svg
           className="cart-preview__icon"
           viewBox="0 0 24 24"
@@ -18,25 +24,30 @@ function CartPreview() {
           <circle cx="20" cy="21" r="1" />
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
         </svg>
-        <span className="cart-preview__badge">{cartItems.length}</span>
+        <span className="cart-preview__badge">{totalItems}</span>
       </button>
       <div className="cart-preview__dropdown">
-        <ul className="cart-preview__list">
-          {cartItems.map((item) => (
-            <li key={item.id} className="cart-preview__item">
-              <span className="cart-preview__name">{item.name}</span>
-              <span className="cart-preview__quantity">×{item.quantity}</span>
-              <span className="cart-preview__price">${item.price}</span>
-              <button
-                type="button"
-                className="button button--danger cart-preview__remove"
-                aria-label={`Remove 1 of ${item.quantity} ${item.name}`}
-              >
-                Remove 1
-              </button>
-            </li>
-          ))}
-        </ul>
+        {cartItems.length === 0 ? (
+          <p className="cart-preview__empty">Your cart is empty.</p>
+        ) : (
+          <ul className="cart-preview__list">
+            {cartItems.map((item) => (
+              <li key={item.id} className="cart-preview__item">
+                <span className="cart-preview__name">{item.name}</span>
+                <span className="cart-preview__quantity">×{item.quantity}</span>
+                <span className="cart-preview__price">${item.price}</span>
+                <button
+                  type="button"
+                  className="button button--danger cart-preview__remove"
+                  aria-label={`Remove 1 ${item.name} from cart`}
+                  onClick={() => removeFromCart(item.id)}
+                >
+                  Remove 1
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   )

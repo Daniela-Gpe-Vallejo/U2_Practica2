@@ -238,6 +238,11 @@
        list-style: none;
      }
 
+     .cart-preview__empty {
+       padding: var(--space-2);
+       text-align: center;
+     }
+
      .cart-preview__item {
        display: flex;
        align-items: center;

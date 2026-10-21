@@ -13,8 +13,12 @@ Los componentes están anidados en este orden:
 
 `Page` y `Panel` no usan el conteo. El valor lo necesitan el primero y el cuarto.
 
-## Qué hay que lograr
+## Funcionalidad completada
 
-Al pulsar **Add to cart**, el texto **Items** del header debe aumentar.
+- **Add to cart** agrega una unidad del producto.
+- **Items** y la insignia del carrito muestran el total de unidades.
+- El preview agrupa cada producto y muestra su cantidad actual.
+- **Remove 1** descuenta una unidad y elimina el producto cuando llega a cero.
 
-Ese estado se comparte con `useContext`. No se pasa por props a través de `Page` ni de `Panel`.
+El estado y las acciones se comparten con `CartContext`; no se pasan por props a
+través de `Page` ni de `Panel`.
